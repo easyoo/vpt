@@ -639,8 +639,8 @@ from tqdm import tqdm
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     # model info
-    parser.add_argument('--learnable_layers',type=int,default=2)
-    parser.add_argument('--learnable_num_per_layer',type=int,default=16)
+    parser.add_argument('--learnable_layers',type=int,default=1)
+    parser.add_argument('--learnable_num_per_layer',type=int,default=32)
     
     parser.add_argument('--fused_layer',type=list,default=[1,2,3,4])
     parser.add_argument('--fused_layer_learnable',type=list,default=[0])
@@ -648,8 +648,8 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', type=str, default=r'MVTec-AD') # 'MVTec-AD' or 'VisA' or 'Real-IAD'
     parser.add_argument('--data_path', type=str, default=r'/home/jjquan/datasets/mvtec')  # Replace it with your path.
     parser.add_argument('--shot', type=int, default=4) # Number of samples
-    parser.add_argument('--total_epochs', type=int, default=50)
-    parser.add_argument('--internal', type=int, default=5)
+    parser.add_argument('--total_epochs', type=int, default=5)
+    parser.add_argument('--internal', type=int, default=1)
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--phase', type=str, default='train')
     parser.add_argument('--input_size', type=int, default=448)
