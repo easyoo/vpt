@@ -635,21 +635,23 @@ class PatchCosineLoss(nn.Module):
 import argparse
 import torch.nn as nn
 from tqdm import tqdm
+from datetime import datetime
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     # model info
-    parser.add_argument('--learnable_layers',type=int,default=1)
-    parser.add_argument('--learnable_num_per_layer',type=int,default=32)
+    parser.add_argument('--learnable_layers',type=int, default=1)
+    parser.add_argument('--learnable_num_per_layer',type=int, default=32)
     
     parser.add_argument('--fused_layer',type=list,default=[1,2,3,4])
     parser.add_argument('--fused_layer_learnable',type=list,default=[0])
+    parser.add_argument('--train_class',type=str,default=None,choices=['carpet', 'grid', 'leather', 'tile', 'wood', 'bottle', 'cable', 'capsule','hazelnut', 'metal_nut', 'pill', 'screw', 'toothbrush', 'transistor', 'zipper'])
     # dataset info
     parser.add_argument('--dataset', type=str, default=r'MVTec-AD') # 'MVTec-AD' or 'VisA' or 'Real-IAD'
     parser.add_argument('--data_path', type=str, default=r'/home/jjquan/datasets/mvtec')  # Replace it with your path.
     parser.add_argument('--shot', type=int, default=4) # Number of samples
-    parser.add_argument('--total_epochs', type=int, default=5)
-    parser.add_argument('--internal', type=int, default=1)
+    parser.add_argument('--total_epochs', type=int, default=25)
+    parser.add_argument('--internal', type=int, default=5)
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--phase', type=str, default='train')
     parser.add_argument('--input_size', type=int, default=448)
@@ -678,15 +680,21 @@ if __name__ == '__main__':
         train_data_list = []
         test_data_list = []
         for i, item in enumerate(args.item_list):
-            train_path = os.path.join(args.data_path, item, 'train')
+            
             test_path = os.path.join(args.data_path, item)
-
+            test_data = MVTecDataset(root=test_path, transform=data_transform, gt_transform=gt_transform, phase="test")
+            test_data_list.append(test_data)
+            
+            if args.train_class is not None and args.train_class != item:
+                continue
+            
+            train_path = os.path.join(args.data_path, item, 'train')
             train_data = ImageFolder(root=train_path, transform=data_transform)
             train_data.classes = item
             train_data.class_to_idx = {item: i}
             # Randomly select shot samples per class
             train_data.samples = [(sample[0], i) for sample in random.sample(train_data.samples, args.shot)]
-            print_fn(train_data.samples)
+            # print_fn(train_data.samples)
             # Data augmentation
             augmented_data = []
             for img, label in train_data:
@@ -697,18 +705,24 @@ if __name__ == '__main__':
                 torch.stack([item[0] for item in augmented_data]),
                 torch.tensor([item[1] for item in augmented_data])
             )
-            test_data = MVTecDataset(root=test_path, transform=data_transform, gt_transform=gt_transform, phase="test")
+            
             train_data_list.append(augmented_dataset)
-            test_data_list.append(test_data)
+            
         train_data = ConcatDataset(train_data_list)
         train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=args.batch_size, shuffle=True, num_workers=4, drop_last=True)
     
     if args.phase == 'train':
         train_args_str = (
+            f"\n\n\n=======================================☆☆☆ Configuration Information ☆☆☆========================================\n"
+            f"--Running Time:{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
             f"--learnable_layers {args.learnable_layers}\n"
             f"--learnable_num_per_layer {args.learnable_num_per_layer}\n"
             f"--fused_layer {args.fused_layer}\n"
-            f"--fused_layer_learnable {args.fused_layer_learnable}"
+            f"--fused_layer_learnable {args.fused_layer_learnable}\n"
+            f'--total_epochs {args.total_epochs}\n'
+            f'--internal {args.internal}\n'
+            f'--batch_size {args.batch_size}'
+            f"\n========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================\n"
         )
         print_fn(train_args_str)
         
@@ -764,8 +778,11 @@ if __name__ == '__main__':
                            
                 
                 # 映射到同一空间
-                patch_mapping = model.token_mapping(fused_patch_token)+fused_patch_token
-                learnable_mapping = model.token_mapping(fused_learnable_token)+fused_learnable_token
+                # patch_mapping = model.token_mapping(fused_patch_token)+fused_patch_token
+                # learnable_mapping = model.token_mapping(fused_learnable_token)+fused_learnable_token
+                
+                patch_mapping = model.token_mapping(fused_patch_token)
+                learnable_mapping = model.token_mapping(fused_learnable_token)
                 
                 loss = cos_loss(patch_mapping, learnable_mapping)
                 
@@ -780,10 +797,14 @@ if __name__ == '__main__':
             if (epoch + 1) % args.internal == 0 or (epoch + 1) % args.total_epochs == 0:
                 auroc_sp_list, ap_sp_list, f1_sp_list = [], [], []
                 auroc_px_list, ap_px_list, f1_px_list, aupro_px_list = [], [], [], []
-
+                
+                metric_names = ["I-Auroc", "I-AP", "I-F1", "P-AUROC", "P-AP", "P-F1", "P-AUPRO"]
+                header = "{:^12}".format("Class") + "".join(["{:^12}".format(name) for name in metric_names])
+                print_fn(header)
                 for item, test_data in zip(args.item_list, test_data_list):
-                    test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=args.batch_size, shuffle=False,
-                                                                  num_workers=4)
+                    if args.train_class is not None and args.train_class != item:
+                        continue
+                    test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=args.batch_size, shuffle=False, num_workers=4)
                     results = evaluation_batch(model, test_dataloader, device, max_ratio=0.01, resize_mask=256)
                     auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px = results
                     auroc_sp_list.append(auroc_sp)
@@ -793,11 +814,16 @@ if __name__ == '__main__':
                     ap_px_list.append(ap_px)
                     f1_px_list.append(f1_px)
                     aupro_px_list.append(aupro_px)
-                    print_fn(
-                        '{}: I-Auroc:{:.4f}, I-AP:{:.4f}, I-F1:{:.4f}, P-AUROC:{:.4f}, P-AP:{:.4f}, P-F1:{:.4f}, P-AUPRO:{:.4f}'.format(
-                            item, auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px))
-
-                print_fn('Mean: I-Auroc:{:.4f}, I-AP:{:.4f}, I-F1:{:.4f}, P-AUROC:{:.4f}, P-AP:{:.4f}, P-F1:{:.4f}, P-AUPRO:{:.4f}'.format(
-                        np.mean(auroc_sp_list), np.mean(ap_sp_list), np.mean(f1_sp_list),
-                        np.mean(auroc_px_list), np.mean(ap_px_list), np.mean(f1_px_list), np.mean(aupro_px_list)))
+                    # print_fn(
+                    #     '{}: I-Auroc:{:.4f}, I-AP:{:.4f}, I-F1:{:.4f}, P-AUROC:{:.4f}, P-AP:{:.4f}, P-F1:{:.4f}, P-AUPRO:{:.4f}'.format(
+                    #         item, auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px))
+                    row = "{:^12}".format(item) + "".join(["{:^12.4f}".format(val) for val in [auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px]])
+                    print_fn(row)
+                
+                # print_fn('Mean: I-Auroc:{:.4f}, I-AP:{:.4f}, I-F1:{:.4f}, P-AUROC:{:.4f}, P-AP:{:.4f}, P-F1:{:.4f}, P-AUPRO:{:.4f}'.format(
+                #         np.mean(auroc_sp_list), np.mean(ap_sp_list), np.mean(f1_sp_list),
+                #         np.mean(auroc_px_list), np.mean(ap_px_list), np.mean(f1_px_list), np.mean(aupro_px_list)))
+                mean_values = [np.mean(auroc_sp_list), np.mean(ap_sp_list), np.mean(f1_sp_list),np.mean(auroc_px_list), np.mean(ap_px_list), np.mean(f1_px_list), np.mean(aupro_px_list)]
+                mean_row = "{:^12}".format("Mean") + "".join(["{:^12.4f}".format(val) for val in mean_values])
+                print_fn(mean_row)
                 torch.save(model.state_dict(), os.path.join(args.save_dir, args.save_name, f'model_{args.internal}.pth'))
