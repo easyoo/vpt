@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 from dinov2.models import vision_transformer
 import torch
 import random
@@ -556,6 +559,7 @@ def evaluation_batch(model, dataloader, device, _class_=None, max_ratio=0, resiz
             learnable_mapping = model.token_mapping(fused_learnable_token)
             
             # anomaly_map, _ = cal_anomaly_maps(en, de, img.shape[-1])
+            # b 1 392 392
             anomaly_map = compute_anomaly_scores(patch_mapping.cpu().numpy(), learnable_mapping.cpu().numpy(), img.shape[-1])
            
             if resize_mask is not None:
@@ -577,10 +581,10 @@ def evaluation_batch(model, dataloader, device, _class_=None, max_ratio=0, resiz
                 sp_score = torch.sort(anomaly_map, dim=1, descending=True)[0][:, :int(anomaly_map.shape[1] * max_ratio)]
                 sp_score = sp_score.mean(dim=1)
             pr_list_sp.append(sp_score)
-        gt_list_px = torch.cat(gt_list_px, dim=0)[:, 0].cpu().numpy()
+        gt_list_px = torch.cat(gt_list_px, dim=0)[:, 0].cpu().numpy() # B H W
         pr_list_px = torch.cat(pr_list_px, dim=0)[:, 0].cpu().numpy()
-        gt_list_sp = torch.cat(gt_list_sp).flatten().cpu().numpy()
-        pr_list_sp = torch.cat(pr_list_sp).flatten().cpu().numpy()
+        gt_list_sp = torch.cat(gt_list_sp).flatten().cpu().numpy() # B
+        pr_list_sp = torch.cat(pr_list_sp).flatten().cpu().numpy() # B
         
         # GPU acceleration
         auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px = ader_evaluator(pr_list_px, pr_list_sp, gt_list_px, gt_list_sp)
@@ -601,7 +605,9 @@ import torch.nn as nn
 class PatchCosineLoss(nn.Module):
     def __init__(self):
         super(PatchCosineLoss, self).__init__()
-
+        
+        self.temperature = nn.Parameter(torch.tensor(args.temperature if args.temperature is not None else 0.07))
+        
     def forward(self, x, y):
         """
         Args:
@@ -619,8 +625,7 @@ class PatchCosineLoss(nn.Module):
         cosine_sim = torch.einsum('bnd,bkd->bnk', x_normalized, y_normalized)  # [B, N, K]
 
         # softmax得到权重
-        t=0.07
-        weights = F.softmax(cosine_sim/t, dim=-1)  # [B, N, K]
+        weights = F.softmax(cosine_sim/self.temperature, dim=-1)  # [B, N, K]
 
         # 用权重加权所有原型
         soft_tokens = torch.einsum('bnk,bkd->bnd', weights, y)  # [B, N, D]
@@ -629,6 +634,46 @@ class PatchCosineLoss(nn.Module):
         cosine_sim_selected = F.cosine_similarity(x, soft_tokens, dim=-1)  # [B, N]
         cosine_dist = 1 - cosine_sim_selected
         loss = cosine_dist.mean()
+        return loss
+    
+class ScaledPatchCosineLoss(nn.Module):
+    def __init__(self):
+        super(ScaledPatchCosineLoss, self).__init__()
+        self.temperature = nn.Parameter(torch.tensor(args.temperature))
+        self.scaled_factor = args.scaled_factor
+    
+    def forward(self, x, y):
+        """
+        Args:
+            x: Tensor of shape [B, N, D], e.g., patch tokens
+            y: Tensor of shape [B, K, D], e.g., learnable tokens or other reference tokens
+
+        Returns:
+            loss: Scalar tensor, mean cosine distance between each x patch and its nearest neighbor in y
+        """
+
+        
+        # x: [B, N, D], y: [B, K, D]
+        x_normalized = F.normalize(x, p=2, dim=-1)
+        y_normalized = F.normalize(y, p=2, dim=-1)
+        cosine_sim = torch.einsum('bnd,bkd->bnk', x_normalized, y_normalized)  # [B, N, K]
+
+        # softmax得到权重
+        weights = F.softmax(cosine_sim/self.temperature, dim=-1)  # [B, N, K]
+
+        # 用权重加权所有原型
+        soft_tokens = torch.einsum('bnk,bkd->bnd', weights, y)  # [B, N, D]
+
+        # 计算每个patch和加权原型的余弦距离     
+        cosine_sim_selected = F.cosine_similarity(x, soft_tokens, dim=-1)  # [B, N]
+        
+        cosine_dist = 1 - cosine_sim_selected
+        dis = cosine_dist.detach()
+        dis_mean = dis.mean()
+        
+        scaled_factor = (dis / dis_mean)**self.scaled_factor
+        loss = (scaled_factor*cosine_dist).mean()
+        
         return loss
         ####################################################
 
@@ -643,14 +688,18 @@ if __name__ == '__main__':
     parser.add_argument('--learnable_layers',type=int, default=1)
     parser.add_argument('--learnable_num_per_layer',type=int, default=32)
     
-    parser.add_argument('--fused_layer',type=list,default=[1,2,3,4])
+    parser.add_argument('--fused_layer',type=list,default=[1,2,3,4,6,8,11])
     parser.add_argument('--fused_layer_learnable',type=list,default=[0])
     parser.add_argument('--train_class',type=str,default=None,choices=['carpet', 'grid', 'leather', 'tile', 'wood', 'bottle', 'cable', 'capsule','hazelnut', 'metal_nut', 'pill', 'screw', 'toothbrush', 'transistor', 'zipper'])
+    
+    parser.add_argument('--temperature',type=float,default=0.07,help='Temperature for the cosine distance loss')
+    parser.add_argument('--scaled_factor',type=int,default=4,help='Scaled factor for the cosine distance loss')
+    
     # dataset info
     parser.add_argument('--dataset', type=str, default=r'MVTec-AD') # 'MVTec-AD' or 'VisA' or 'Real-IAD'
     parser.add_argument('--data_path', type=str, default=r'/home/jjquan/datasets/mvtec')  # Replace it with your path.
     parser.add_argument('--shot', type=int, default=4) # Number of samples
-    parser.add_argument('--total_epochs', type=int, default=25)
+    parser.add_argument('--total_epochs', type=int, default=5)
     parser.add_argument('--internal', type=int, default=5)
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--phase', type=str, default='train')
@@ -658,7 +707,7 @@ if __name__ == '__main__':
     parser.add_argument('--crop_size', type=int, default=392)
     # save info
     parser.add_argument('--save_dir', type=str, default='./saved_results')
-    parser.add_argument('--save_name', type=str, default='Few-Shot')
+    parser.add_argument('--save_name', type=str, default='Few-Shot-y3-debug')
     args = parser.parse_args()
     if args.dataset == 'MVTec-AD':
         args.item_list = ['carpet', 'grid', 'leather', 'tile', 'wood', 'bottle', 'cable', 'capsule',
@@ -713,7 +762,7 @@ if __name__ == '__main__':
     
     if args.phase == 'train':
         train_args_str = (
-            f"\n\n\n=======================================☆☆☆ Configuration Information ☆☆☆========================================\n"
+            f"\n\n\n\n\n=======================================☆☆☆ Configuration Information ☆☆☆========================================\n"
             f"--Running Time:{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
             f"--learnable_layers {args.learnable_layers}\n"
             f"--learnable_num_per_layer {args.learnable_num_per_layer}\n"
@@ -721,7 +770,10 @@ if __name__ == '__main__':
             f"--fused_layer_learnable {args.fused_layer_learnable}\n"
             f'--total_epochs {args.total_epochs}\n'
             f'--internal {args.internal}\n'
-            f'--batch_size {args.batch_size}'
+            f'--batch_size {args.batch_size}\n'
+            f'--shot {args.shot}\n'
+            f'--temperature {args.temperature}\n'
+            f'--scaled_factor {args.scaled_factor}'
             f"\n========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================\n"
         )
         print_fn(train_args_str)
@@ -758,7 +810,8 @@ if __name__ == '__main__':
         print_fn('train image number:{}'.format(len(train_data)))
 
 
-        cos_loss = PatchCosineLoss()
+        # cos_loss = PatchCosineLoss()
+        cos_loss = ScaledPatchCosineLoss()
         for epoch in range(args.total_epochs):
             model.token_mapping.train()
             loss_list = []
