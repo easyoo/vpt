@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 23:36:36
+
+--run id evalute 2 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5887
+epoch [2/70], loss:0.5709
+epoch [3/70], loss:0.5221
+epoch [4/70], loss:0.4446
+epoch [5/70], loss:0.3587
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.5052      0.7620      0.8530      0.8135      0.0077      0.0221      0.4161   
+    Mean       0.5052      0.7620      0.8530      0.8135      0.0077      0.0221      0.4161   
+epoch [6/70], loss:0.2873
+epoch [7/70], loss:0.2344
+epoch [8/70], loss:0.1882
+epoch [9/70], loss:0.1492
+epoch [10/70], loss:0.1162
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.5495      0.7798      0.8530      0.8150      0.0094      0.0228      0.4936   
+    Mean       0.5495      0.7798      0.8530      0.8150      0.0094      0.0228      0.4936   
+epoch [11/70], loss:0.0905
+epoch [12/70], loss:0.0711
+epoch [13/70], loss:0.0569
+epoch [14/70], loss:0.0464
+epoch [15/70], loss:0.0385
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.5829      0.8158      0.8623      0.8535      0.0160      0.0391      0.5549   
+    Mean       0.5829      0.8158      0.8623      0.8535      0.0160      0.0391      0.5549   
+epoch [16/70], loss:0.0328
+epoch [17/70], loss:0.0283
+epoch [18/70], loss:0.0248
+epoch [19/70], loss:0.0219
+epoch [20/70], loss:0.0197
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6188      0.8406      0.8603      0.8929      0.0483      0.1114      0.6523   
+    Mean       0.6188      0.8406      0.8603      0.8929      0.0483      0.1114      0.6523   
+epoch [21/70], loss:0.0178
+epoch [22/70], loss:0.0163
+epoch [23/70], loss:0.0150
+epoch [24/70], loss:0.0139
+epoch [25/70], loss:0.0130
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6237      0.8338      0.8592      0.9169      0.0703      0.1483      0.7321   
+    Mean       0.6237      0.8338      0.8592      0.9169      0.0703      0.1483      0.7321   
+epoch [26/70], loss:0.0122
+epoch [27/70], loss:0.0115
+epoch [28/70], loss:0.0108
+epoch [29/70], loss:0.0103
+epoch [30/70], loss:0.0098
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6425      0.8413      0.8625      0.9193      0.0777      0.1647      0.7417   
+    Mean       0.6425      0.8413      0.8625      0.9193      0.0777      0.1647      0.7417   
+epoch [31/70], loss:0.0094
+epoch [32/70], loss:0.0090
+epoch [33/70], loss:0.0086
+epoch [34/70], loss:0.0083
+epoch [35/70], loss:0.0080
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6516      0.8478      0.8582      0.9216      0.0931      0.1903      0.7522   
+    Mean       0.6516      0.8478      0.8582      0.9216      0.0931      0.1903      0.7522   
+epoch [36/70], loss:0.0077
+epoch [37/70], loss:0.0075
+epoch [38/70], loss:0.0072
+epoch [39/70], loss:0.0070
+epoch [40/70], loss:0.0068
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6831      0.8676      0.8667      0.9232      0.1124      0.2163      0.7556   
+    Mean       0.6831      0.8676      0.8667      0.9232      0.1124      0.2163      0.7556   
+epoch [41/70], loss:0.0066
+epoch [42/70], loss:0.0064
+epoch [43/70], loss:0.0062
+epoch [44/70], loss:0.0060
+epoch [45/70], loss:0.0059
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6971      0.8760      0.8722      0.9265      0.1201      0.2241      0.7629   
+    Mean       0.6971      0.8760      0.8722      0.9265      0.1201      0.2241      0.7629   
+epoch [46/70], loss:0.0057
+epoch [47/70], loss:0.0056
+epoch [48/70], loss:0.0054
+epoch [49/70], loss:0.0053
+epoch [50/70], loss:0.0052
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6913      0.8720      0.8699      0.9296      0.1262      0.2288      0.7694   
+    Mean       0.6913      0.8720      0.8699      0.9296      0.1262      0.2288      0.7694   
+epoch [51/70], loss:0.0050
+epoch [52/70], loss:0.0049
+epoch [53/70], loss:0.0048
+epoch [54/70], loss:0.0047
+epoch [55/70], loss:0.0046
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6825      0.8691      0.8635      0.9249      0.1208      0.2244      0.7570   
+    Mean       0.6825      0.8691      0.8635      0.9249      0.1208      0.2244      0.7570   
+epoch [56/70], loss:0.0045
+epoch [57/70], loss:0.0044
+epoch [58/70], loss:0.0044
+epoch [59/70], loss:0.0043
+epoch [60/70], loss:0.0042
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6825      0.8709      0.8626      0.9228      0.1202      0.2236      0.7510   
+    Mean       0.6825      0.8709      0.8626      0.9228      0.1202      0.2236      0.7510   
+epoch [61/70], loss:0.0042
+epoch [62/70], loss:0.0041
+epoch [63/70], loss:0.0041
+epoch [64/70], loss:0.0041
+epoch [65/70], loss:0.0041
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6881      0.8737      0.8669      0.9243      0.1254      0.2299      0.7549   
+    Mean       0.6881      0.8737      0.8669      0.9243      0.1254      0.2299      0.7549   
+epoch [66/70], loss:0.0040
+epoch [67/70], loss:0.0040
+epoch [68/70], loss:0.0040
+epoch [69/70], loss:0.0040
+epoch [70/70], loss:0.0040
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   screw       0.6852      0.8721      0.8669      0.9255      0.1275      0.2322      0.7579   
+    Mean       0.6852      0.8721      0.8669      0.9255      0.1275      0.2322      0.7579   

@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 23:29:39
+
+--run id evalute 2 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5605
+epoch [2/70], loss:0.5427
+epoch [3/70], loss:0.4991
+epoch [4/70], loss:0.4307
+epoch [5/70], loss:0.3502
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.4145      0.7902      0.8942      0.5313      0.1445      0.3058      0.1095   
+    Mean       0.4145      0.7902      0.8942      0.5313      0.1445      0.3058      0.1095   
+epoch [6/70], loss:0.2807
+epoch [7/70], loss:0.2272
+epoch [8/70], loss:0.1845
+epoch [9/70], loss:0.1480
+epoch [10/70], loss:0.1164
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.5430      0.8677      0.8942      0.6337      0.2063      0.3285      0.2932   
+    Mean       0.5430      0.8677      0.8942      0.6337      0.2063      0.3285      0.2932   
+epoch [11/70], loss:0.0908
+epoch [12/70], loss:0.0719
+epoch [13/70], loss:0.0574
+epoch [14/70], loss:0.0467
+epoch [15/70], loss:0.0388
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.7214      0.9269      0.8942      0.6924      0.2722      0.3576      0.5383   
+    Mean       0.7214      0.9269      0.8942      0.6924      0.2722      0.3576      0.5383   
+epoch [16/70], loss:0.0327
+epoch [17/70], loss:0.0281
+epoch [18/70], loss:0.0246
+epoch [19/70], loss:0.0216
+epoch [20/70], loss:0.0194
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.7234      0.9280      0.8966      0.7372      0.3056      0.3906      0.5702   
+    Mean       0.7234      0.9280      0.8966      0.7372      0.3056      0.3906      0.5702   
+epoch [21/70], loss:0.0174
+epoch [22/70], loss:0.0159
+epoch [23/70], loss:0.0146
+epoch [24/70], loss:0.0136
+epoch [25/70], loss:0.0126
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.7571      0.9397      0.8976      0.7551      0.3294      0.3982      0.6054   
+    Mean       0.7571      0.9397      0.8976      0.7551      0.3294      0.3982      0.6054   
+epoch [26/70], loss:0.0118
+epoch [27/70], loss:0.0111
+epoch [28/70], loss:0.0105
+epoch [29/70], loss:0.0099
+epoch [30/70], loss:0.0094
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.7928      0.9502      0.8976      0.8067      0.3870      0.4507      0.6519   
+    Mean       0.7928      0.9502      0.8976      0.8067      0.3870      0.4507      0.6519   
+epoch [31/70], loss:0.0090
+epoch [32/70], loss:0.0086
+epoch [33/70], loss:0.0083
+epoch [34/70], loss:0.0080
+epoch [35/70], loss:0.0077
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8065      0.9536      0.9000      0.7970      0.3791      0.4403      0.6774   
+    Mean       0.8065      0.9536      0.9000      0.7970      0.3791      0.4403      0.6774   
+epoch [36/70], loss:0.0074
+epoch [37/70], loss:0.0072
+epoch [38/70], loss:0.0069
+epoch [39/70], loss:0.0067
+epoch [40/70], loss:0.0065
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8138      0.9547      0.9010      0.7913      0.3732      0.4340      0.6827   
+    Mean       0.8138      0.9547      0.9010      0.7913      0.3732      0.4340      0.6827   
+epoch [41/70], loss:0.0063
+epoch [42/70], loss:0.0061
+epoch [43/70], loss:0.0059
+epoch [44/70], loss:0.0058
+epoch [45/70], loss:0.0056
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8382      0.9616      0.9020      0.8014      0.3849      0.4450      0.6878   
+    Mean       0.8382      0.9616      0.9020      0.8014      0.3849      0.4450      0.6878   
+epoch [46/70], loss:0.0055
+epoch [47/70], loss:0.0053
+epoch [48/70], loss:0.0052
+epoch [49/70], loss:0.0050
+epoch [50/70], loss:0.0049
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8583      0.9670      0.9064      0.8141      0.4040      0.4577      0.7080   
+    Mean       0.8583      0.9670      0.9064      0.8141      0.4040      0.4577      0.7080   
+epoch [51/70], loss:0.0048
+epoch [52/70], loss:0.0046
+epoch [53/70], loss:0.0045
+epoch [54/70], loss:0.0044
+epoch [55/70], loss:0.0043
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8543      0.9654      0.9109      0.8100      0.4023      0.4523      0.7095   
+    Mean       0.8543      0.9654      0.9109      0.8100      0.4023      0.4523      0.7095   
+epoch [56/70], loss:0.0043
+epoch [57/70], loss:0.0042
+epoch [58/70], loss:0.0041
+epoch [59/70], loss:0.0040
+epoch [60/70], loss:0.0040
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8656      0.9684      0.9109      0.8110      0.4045      0.4536      0.7131   
+    Mean       0.8656      0.9684      0.9109      0.8110      0.4045      0.4536      0.7131   
+epoch [61/70], loss:0.0039
+epoch [62/70], loss:0.0039
+epoch [63/70], loss:0.0039
+epoch [64/70], loss:0.0038
+epoch [65/70], loss:0.0038
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8724      0.9700      0.9109      0.8205      0.4160      0.4655      0.7192   
+    Mean       0.8724      0.9700      0.9109      0.8205      0.4160      0.4655      0.7192   
+epoch [66/70], loss:0.0038
+epoch [67/70], loss:0.0038
+epoch [68/70], loss:0.0038
+epoch [69/70], loss:0.0037
+epoch [70/70], loss:0.0037
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ metal_nut     0.8768      0.9709      0.9128      0.8224      0.4195      0.4674      0.7226   
+    Mean       0.8768      0.9709      0.9128      0.8224      0.4195      0.4674      0.7226   

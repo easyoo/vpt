@@ -1,0 +1,26 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-02 17:22:01
+
+--run id test
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 20
+--internal 1
+--batch_size 16
+--shot 4
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:88
+epoch [1/20], loss:0.9219
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5440      0.7165      0.7635      0.6800      0.1467      0.1854      0.2347   
+    Mean       0.5440      0.7165      0.7635      0.6800      0.1467      0.1854      0.2347   

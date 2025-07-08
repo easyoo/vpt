@@ -1,0 +1,84 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 20:35:45
+
+--run id test3
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5727
+epoch [2/70], loss:0.5543
+epoch [3/70], loss:0.5104
+epoch [4/70], loss:0.4416
+epoch [5/70], loss:0.3650
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      0.9079      0.9732      0.9000      0.8906      0.2727      0.4477      0.6350   
+    Mean       0.9079      0.9732      0.9000      0.8906      0.2727      0.4477      0.6350   
+epoch [6/70], loss:0.3056
+epoch [7/70], loss:0.2557
+epoch [8/70], loss:0.2103
+epoch [9/70], loss:0.1628
+epoch [10/70], loss:0.1220
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      0.9897      0.9968      0.9841      0.9379      0.6003      0.5896      0.8078   
+    Mean       0.9897      0.9968      0.9841      0.9379      0.6003      0.5896      0.8078   
+epoch [11/70], loss:0.0928
+epoch [12/70], loss:0.0729
+epoch [13/70], loss:0.0580
+epoch [14/70], loss:0.0479
+epoch [15/70], loss:0.0399
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      0.9937      0.9980      0.9844      0.9637      0.7366      0.6933      0.8749   
+    Mean       0.9937      0.9980      0.9844      0.9637      0.7366      0.6933      0.8749   
+epoch [16/70], loss:0.0337
+epoch [17/70], loss:0.0288
+epoch [18/70], loss:0.0253
+epoch [19/70], loss:0.0224
+epoch [20/70], loss:0.0200
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      1.0000      1.0000      1.0000      0.9679      0.7545      0.7148      0.8986   
+    Mean       1.0000      1.0000      1.0000      0.9679      0.7545      0.7148      0.8986   
+epoch [21/70], loss:0.0181
+epoch [22/70], loss:0.0166
+epoch [23/70], loss:0.0153
+epoch [24/70], loss:0.0142
+epoch [25/70], loss:0.0132
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      1.0000      1.0000      1.0000      0.9695      0.7577      0.7198      0.9050   
+    Mean       1.0000      1.0000      1.0000      0.9695      0.7577      0.7198      0.9050   
+epoch [26/70], loss:0.0125
+epoch [27/70], loss:0.0117
+epoch [28/70], loss:0.0111
+epoch [29/70], loss:0.0105
+epoch [30/70], loss:0.0100
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      0.9984      0.9995      0.9921      0.9700      0.7551      0.7189      0.9012   
+    Mean       0.9984      0.9995      0.9921      0.9700      0.7551      0.7189      0.9012   
+epoch [31/70], loss:0.0096
+epoch [32/70], loss:0.0091
+epoch [33/70], loss:0.0088
+epoch [34/70], loss:0.0084
+epoch [35/70], loss:0.0081
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   bottle      0.9992      0.9998      0.9921      0.9682      0.7467      0.7121      0.8957   
+    Mean       0.9992      0.9998      0.9921      0.9682      0.7467      0.7121      0.8957   
+epoch [36/70], loss:0.0078
+epoch [37/70], loss:0.0075
+epoch [38/70], loss:0.0073
+epoch [39/70], loss:0.0071
+epoch [40/70], loss:0.0069
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   

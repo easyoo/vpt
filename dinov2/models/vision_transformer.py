@@ -46,15 +46,15 @@ def MLp(in_dim,out_dim):
         nn.Linear(in_dim, out_dim),
         nn.ReLU(),
     )
+    
 class LearnableTokens(nn.Module):
     def __init__(self, 
-                    layers = 4,
+                    layers,
                     dim = 768,
                     learnable_token_per_layer = 8):
         super().__init__()
         self.token_dict = nn.ParameterDict({
-            str(i): nn.Parameter(torch.randn(1,learnable_token_per_layer, dim))
-            for i in range(layers)})
+            str(i): nn.Parameter(torch.randn(1,learnable_token_per_layer, dim)) for i in layers})
         for param in self.token_dict.values():
             nn.init.normal_(param, std=1e-6)
 
@@ -73,7 +73,6 @@ class ReconstructHead(nn.Module):
     def forward(self, x):
         x = self.norm(x)
         return self.rec_head(x)
-
 
 class DinoVisionTransformer(nn.Module):
     def __init__(
@@ -206,13 +205,13 @@ class DinoVisionTransformer(nn.Module):
         
         
         #############
-        learnable_layers = 4 if arg is None else arg.learnable_layers
+        # learnable_layers = 4 if arg is None else arg.learnable_layers
         # self.mlp_per_layer = nn.ModuleDict({
         #     str(i): MLp(embed_dim, embed_dim)
         #     for i in range(learnable_layers)
         # })
-        
-        self.tokens_per_layer = LearnableTokens(layers=learnable_layers,learnable_token_per_layer=arg.learnable_num_per_layer)
+        self.token_insert_layers = arg.insert_layers
+        self.tokens_insert_layer = LearnableTokens(layers=arg.insert_layers,learnable_token_per_layer=arg.learnable_num_per_layer)
         self.token_mapping = nn.Sequential(
             nn.LayerNorm(768),
             nn.Linear(768, 768),
@@ -220,9 +219,32 @@ class DinoVisionTransformer(nn.Module):
             nn.Linear(768, 768),
             nn.ReLU(),
         )
+        # self.token_mapping = nn.Sequential(
+        #     nn.LayerNorm(768),
+        #     nn.Linear(768, 768),
+        #     nn.ReLU(),
+        #     nn.Linear(768, 768),
+        #     # nn.Dropout(p=0.5),
+        #     nn.ReLU(),
+        # )
+        # self.token_mapping = block_fn(
+        #         dim=embed_dim,
+        #         num_heads=num_heads,
+        #         mlp_ratio=1,
+        #         qkv_bias=qkv_bias,
+        #         proj_bias=proj_bias,
+        #         ffn_bias=ffn_bias,
+        #         norm_layer=norm_layer,
+        #         act_layer=act_layer,
+        #         ffn_layer=ffn_layer,
+        #         init_values=init_values,
+        #     )
+        
         # self.p2l = nn.Identity()
         # self.rec_head = ReconstructHead(embed_dim, embed_dim)
-        
+        # conv
+        # self.token_mapping_conv = nn.ModuleDict({''})
+    
     def init_weights(self):
         trunc_normal_(self.pos_embed, std=0.02)
         nn.init.normal_(self.cls_token, std=1e-6)
@@ -312,7 +334,7 @@ class DinoVisionTransformer(nn.Module):
         x = self.prepare_tokens_with_masks(x, masks)
         b,l,c = x.shape
         
-        feat_list,patch_feat_layer = [],[]
+        feat_dict,patch_feat_layer = {},[]
         for i,blk in enumerate(self.blocks):
             # if i==0:
             #     x = torch.cat((x,self.tokens_per_layer.token_dict[str(i)].expand(x.shape[0], -1, -1)), dim=1) 
@@ -329,18 +351,28 @@ class DinoVisionTransformer(nn.Module):
             #     x = blk(x)
             # else:
             #     x = blk(x)
-            if i < len(self.tokens_per_layer.token_dict.keys()):
-                x = torch.cat((x,self.tokens_per_layer.token_dict[str(i)].expand(x.shape[0], -1, -1)), dim=1) 
+            # if i < len(self.tokens_per_layer.token_dict.keys()):
+            #     x = torch.cat((x,self.tokens_per_layer.token_dict[str(i)].expand(x.shape[0], -1, -1)), dim=1) 
+            #     x = blk(x)
+            #     length = x.shape[1]-l
+            #     feat_list.append(x[:,-length:,:]) # b len c
+            #     patch_feat_layer.append(x[:,5:l,:])
+            #     x = x[:,:l,:] # b l c
+            # else:
+            #     x = blk(x)
+            #     patch_feat_layer.append(x[:,5:l,:])
+
+            if i in self.token_insert_layers:
+                x = torch.cat((x,self.tokens_insert_layer.token_dict[str(i)].expand(x.shape[0], -1, -1)), dim=1) 
                 x = blk(x)
                 length = x.shape[1]-l
-                feat_list.append(x[:,-length:,:]) # b len c
+                feat_dict[i] = x[:,-length:,:] # b len c
                 patch_feat_layer.append(x[:,5:l,:])
                 x = x[:,:l,:] # b l c
             else:
                 x = blk(x)
                 patch_feat_layer.append(x[:,5:l,:])
-
-   
+            #tokens_insert_layer
         x_norm = self.norm(x)
         return {
             "x_norm_clstoken": x_norm[:, 0],
@@ -350,7 +382,7 @@ class DinoVisionTransformer(nn.Module):
             "masks": masks,
 
             "patch_feat_layer": patch_feat_layer,
-            "feat_list": feat_list,
+            "feat_dict": feat_dict,
         }
 
     def _get_intermediate_layers_not_chunked(self, x, n=1):

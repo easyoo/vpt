@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 23:07:20
+
+--run id evalute 2 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5740
+epoch [2/70], loss:0.5568
+epoch [3/70], loss:0.5099
+epoch [4/70], loss:0.4363
+epoch [5/70], loss:0.3564
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      0.9830      0.9919      0.9892      0.9701      0.2092      0.3015      0.9367   
+    Mean       0.9830      0.9919      0.9892      0.9701      0.2092      0.3015      0.9367   
+epoch [6/70], loss:0.2889
+epoch [7/70], loss:0.2397
+epoch [8/70], loss:0.1968
+epoch [9/70], loss:0.1564
+epoch [10/70], loss:0.1240
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      0.9983      0.9994      0.9946      0.9774      0.2392      0.3207      0.9519   
+    Mean       0.9983      0.9994      0.9946      0.9774      0.2392      0.3207      0.9519   
+epoch [11/70], loss:0.0962
+epoch [12/70], loss:0.0747
+epoch [13/70], loss:0.0591
+epoch [14/70], loss:0.0477
+epoch [15/70], loss:0.0395
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      0.9990      0.9996      0.9946      0.9824      0.2762      0.3546      0.9615   
+    Mean       0.9990      0.9996      0.9946      0.9824      0.2762      0.3546      0.9615   
+epoch [16/70], loss:0.0335
+epoch [17/70], loss:0.0285
+epoch [18/70], loss:0.0250
+epoch [19/70], loss:0.0221
+epoch [20/70], loss:0.0197
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      0.9997      0.9999      0.9946      0.9835      0.2682      0.3571      0.9612   
+    Mean       0.9997      0.9999      0.9946      0.9835      0.2682      0.3571      0.9612   
+epoch [21/70], loss:0.0178
+epoch [22/70], loss:0.0163
+epoch [23/70], loss:0.0150
+epoch [24/70], loss:0.0139
+epoch [25/70], loss:0.0129
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9842      0.2635      0.3602      0.9618   
+    Mean       1.0000      1.0000      1.0000      0.9842      0.2635      0.3602      0.9618   
+epoch [26/70], loss:0.0121
+epoch [27/70], loss:0.0114
+epoch [28/70], loss:0.0108
+epoch [29/70], loss:0.0102
+epoch [30/70], loss:0.0097
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9841      0.2608      0.3582      0.9609   
+    Mean       1.0000      1.0000      1.0000      0.9841      0.2608      0.3582      0.9609   
+epoch [31/70], loss:0.0093
+epoch [32/70], loss:0.0089
+epoch [33/70], loss:0.0085
+epoch [34/70], loss:0.0082
+epoch [35/70], loss:0.0079
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9846      0.2697      0.3639      0.9612   
+    Mean       1.0000      1.0000      1.0000      0.9846      0.2697      0.3639      0.9612   
+epoch [36/70], loss:0.0076
+epoch [37/70], loss:0.0074
+epoch [38/70], loss:0.0071
+epoch [39/70], loss:0.0069
+epoch [40/70], loss:0.0067
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9851      0.2776      0.3696      0.9621   
+    Mean       1.0000      1.0000      1.0000      0.9851      0.2776      0.3696      0.9621   
+epoch [41/70], loss:0.0065
+epoch [42/70], loss:0.0063
+epoch [43/70], loss:0.0061
+epoch [44/70], loss:0.0059
+epoch [45/70], loss:0.0058
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9848      0.2718      0.3616      0.9623   
+    Mean       1.0000      1.0000      1.0000      0.9848      0.2718      0.3616      0.9623   
+epoch [46/70], loss:0.0056
+epoch [47/70], loss:0.0055
+epoch [48/70], loss:0.0053
+epoch [49/70], loss:0.0052
+epoch [50/70], loss:0.0051
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9846      0.2667      0.3569      0.9616   
+    Mean       1.0000      1.0000      1.0000      0.9846      0.2667      0.3569      0.9616   
+epoch [51/70], loss:0.0049
+epoch [52/70], loss:0.0048
+epoch [53/70], loss:0.0047
+epoch [54/70], loss:0.0046
+epoch [55/70], loss:0.0045
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9844      0.2657      0.3541      0.9608   
+    Mean       1.0000      1.0000      1.0000      0.9844      0.2657      0.3541      0.9608   
+epoch [56/70], loss:0.0044
+epoch [57/70], loss:0.0043
+epoch [58/70], loss:0.0042
+epoch [59/70], loss:0.0042
+epoch [60/70], loss:0.0041
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9841      0.2581      0.3490      0.9605   
+    Mean       1.0000      1.0000      1.0000      0.9841      0.2581      0.3490      0.9605   
+epoch [61/70], loss:0.0041
+epoch [62/70], loss:0.0040
+epoch [63/70], loss:0.0040
+epoch [64/70], loss:0.0040
+epoch [65/70], loss:0.0039
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9840      0.2561      0.3476      0.9605   
+    Mean       1.0000      1.0000      1.0000      0.9840      0.2561      0.3476      0.9605   
+epoch [66/70], loss:0.0039
+epoch [67/70], loss:0.0039
+epoch [68/70], loss:0.0039
+epoch [69/70], loss:0.0039
+epoch [70/70], loss:0.0039
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  leather      1.0000      1.0000      1.0000      0.9840      0.2566      0.3479      0.9605   
+    Mean       1.0000      1.0000      1.0000      0.9840      0.2566      0.3479      0.9605   

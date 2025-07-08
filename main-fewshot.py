@@ -544,7 +544,7 @@ def evaluation_batch(model, dataloader, device, _class_=None, max_ratio=0, resiz
         for img, gt, label, img_path in tqdm(dataloader, ncols=80):
             img = img.to(device)
             output = model(img,is_training=True)
-            patch_feat_layer, feat_list = output['patch_feat_layer'], output['feat_list'] # b 4 c || b l c
+            patch_feat_layer, feat_dict = output['patch_feat_layer'], output['feat_dict'] # b 4 c || b l c
             
             fused_layer = args.fused_layer
             fused_learnable_layer = args.fused_layer_learnable
@@ -552,9 +552,25 @@ def evaluation_batch(model, dataloader, device, _class_=None, max_ratio=0, resiz
             fused_patch_token_list = [patch_feat_layer[i] for i in fused_layer]
             fused_patch_token = torch.sum(torch.stack(fused_patch_token_list,dim=0), dim=0)
             
-            fused_learnable_token_list = [feat_list[i] for i in fused_learnable_layer]
+            fused_learnable_token_list = [feat_dict[i] for i in fused_learnable_layer]
             fused_learnable_token = torch.sum(torch.stack(fused_learnable_token_list,dim=0), dim=0)
             
+            # coov
+            # for i,layer in enumerate(model.token_mapping):
+            #         if i == 0:
+            #             o1 = layer(fused_patch_token)
+            #             o2 = layer(fused_learnable_token)
+            #         elif i == 1:
+            #             o1 = layer(o1.permute(0,2,1)).permute(0,2,1)
+            #             o2 = layer(o2.permute(0,2,1)).permute(0,2,1)
+            #         else:
+            #             o1 = layer(o1)
+            #             o2 = layer(o2)
+                    
+            # patch_mapping,learnable_mapping = o1,o2  
+            
+            
+            # mlp
             patch_mapping = model.token_mapping(fused_patch_token)
             learnable_mapping = model.token_mapping(fused_learnable_token)
             
@@ -639,7 +655,8 @@ class PatchCosineLoss(nn.Module):
 class ScaledPatchCosineLoss(nn.Module):
     def __init__(self):
         super(ScaledPatchCosineLoss, self).__init__()
-        self.temperature = nn.Parameter(torch.tensor(args.temperature))
+        # self.temperature = nn.Parameter(torch.tensor(args.temperature))
+        self.temperature = args.temperature
         self.scaled_factor = args.scaled_factor
     
     def forward(self, x, y):
@@ -651,8 +668,6 @@ class ScaledPatchCosineLoss(nn.Module):
         Returns:
             loss: Scalar tensor, mean cosine distance between each x patch and its nearest neighbor in y
         """
-
-        
         # x: [B, N, D], y: [B, K, D]
         x_normalized = F.normalize(x, p=2, dim=-1)
         y_normalized = F.normalize(y, p=2, dim=-1)
@@ -668,6 +683,7 @@ class ScaledPatchCosineLoss(nn.Module):
         cosine_sim_selected = F.cosine_similarity(x, soft_tokens, dim=-1)  # [B, N]
         
         cosine_dist = 1 - cosine_sim_selected
+
         dis = cosine_dist.detach()
         dis_mean = dis.mean()
         
@@ -681,15 +697,26 @@ import argparse
 import torch.nn as nn
 from tqdm import tqdm
 from datetime import datetime
-
+from torch.utils.tensorboard import SummaryWriter
+import sys
+sys.argv += ['--run_id', 'test4','--train_class', 'screw']
 if __name__ == '__main__':
+    
     parser = argparse.ArgumentParser(description='')
+    
+    # tensorboard info
+    parser.add_argument('--logs_dir', type=str, default='./logs', help='log dir name for all runs')
+    parser.add_argument('--run_id', type=str, required=True, help='run id')
+    parser.add_argument('--save_name', type=str, default='Few-Shot-one-class', help='setting dir name')
+    parser.add_argument('--tensorboard', type=str, default='tensorboard', help='tensorboard dir name')
+    parser.add_argument('--check_point', type=str, default='checkpoint', help='checkpoint dir name')
+    
     # model info
-    parser.add_argument('--learnable_layers',type=int, default=1)
     parser.add_argument('--learnable_num_per_layer',type=int, default=32)
     
-    parser.add_argument('--fused_layer',type=list,default=[1,2,3,4,6,8,11])
-    parser.add_argument('--fused_layer_learnable',type=list,default=[0])
+    parser.add_argument('--fused_layer',type=list,default=[1,2,3,4,6,8,11])#1,2,3,4,6,8,11
+    parser.add_argument('--insert_layers',type=list,default=[2,3,8])
+    parser.add_argument('--fused_layer_learnable',type=list,default=[2,8],help='learnable fusing layers ')
     parser.add_argument('--train_class',type=str,default=None,choices=['carpet', 'grid', 'leather', 'tile', 'wood', 'bottle', 'cable', 'capsule','hazelnut', 'metal_nut', 'pill', 'screw', 'toothbrush', 'transistor', 'zipper'])
     
     parser.add_argument('--temperature',type=float,default=0.07,help='Temperature for the cosine distance loss')
@@ -699,21 +726,30 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', type=str, default=r'MVTec-AD') # 'MVTec-AD' or 'VisA' or 'Real-IAD'
     parser.add_argument('--data_path', type=str, default=r'/home/jjquan/datasets/mvtec')  # Replace it with your path.
     parser.add_argument('--shot', type=int, default=4) # Number of samples
-    parser.add_argument('--total_epochs', type=int, default=5)
+    parser.add_argument('--total_epochs', type=int, default=70)
     parser.add_argument('--internal', type=int, default=5)
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--phase', type=str, default='train')
     parser.add_argument('--input_size', type=int, default=448)
     parser.add_argument('--crop_size', type=int, default=392)
-    # save info
-    parser.add_argument('--save_dir', type=str, default='./saved_results')
-    parser.add_argument('--save_name', type=str, default='Few-Shot-y3-debug')
+    
     args = parser.parse_args()
+    if not set(args.fused_layer_learnable).issubset(set(args.insert_layers)):
+        raise ValueError("参数 fused_layer_learnable 必须是 fused_layer 的子集！")
+    
     if args.dataset == 'MVTec-AD':
         args.item_list = ['carpet', 'grid', 'leather', 'tile', 'wood', 'bottle', 'cable', 'capsule',
                  'hazelnut', 'metal_nut', 'pill', 'screw', 'toothbrush', 'transistor', 'zipper']
+    setting_dir = os.path.join(args.logs_dir, args.run_id, args.train_class, args.save_name)
+    tensorboard_dir = os.path.join(args.logs_dir, args.run_id, args.train_class, args.tensorboard)
+    pth_dir = os.path.join(args.logs_dir, args.run_id, args.train_class, args.check_point)
     
-    logger = get_logger(args.save_name, os.path.join(args.save_dir, args.save_name))
+    os.makedirs(setting_dir, exist_ok=True)
+    os.makedirs(tensorboard_dir, exist_ok=True)
+    os.makedirs(pth_dir, exist_ok=True)
+    
+    writer = SummaryWriter(log_dir=tensorboard_dir)
+    logger = get_logger(args.save_name, setting_dir)
     print_fn = logger.info
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
     
@@ -764,7 +800,7 @@ if __name__ == '__main__':
         train_args_str = (
             f"\n\n\n\n\n=======================================☆☆☆ Configuration Information ☆☆☆========================================\n"
             f"--Running Time:{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
-            f"--learnable_layers {args.learnable_layers}\n"
+            f"--run id {args.run_id}\n"
             f"--learnable_num_per_layer {args.learnable_num_per_layer}\n"
             f"--fused_layer {args.fused_layer}\n"
             f"--fused_layer_learnable {args.fused_layer_learnable}\n"
@@ -790,7 +826,7 @@ if __name__ == '__main__':
         for param in model.parameters():
             param.requires_grad = False
         
-        for param in model.tokens_per_layer.parameters():
+        for param in model.tokens_insert_layer.parameters():
             param.requires_grad = True
         
         for param in model.token_mapping.parameters():
@@ -799,7 +835,7 @@ if __name__ == '__main__':
         
         fused_layer = args.fused_layer
         fused_layer_learnable = args.fused_layer_learnable
-        trainable = nn.ModuleList([model.tokens_per_layer,model.token_mapping])    
+        trainable = nn.ModuleList([model.tokens_insert_layer,model.token_mapping])    
         
         # define optimizer
         optimizer = StableAdamW([{'params': trainable.parameters()}],
@@ -818,24 +854,24 @@ if __name__ == '__main__':
             for img, _ in tqdm(train_dataloader, ncols=80):
                 img = img.to(device)
                 ret = model(img,is_training=True)
-                patch_feat_layer, feat_list = ret['patch_feat_layer'], ret['feat_list']
+                patch_feat_layer, feat_dict = ret['patch_feat_layer'], ret['feat_dict']
          
                 fused_patch_token_list = [patch_feat_layer[i] for i in fused_layer]
                 fused_patch_token = torch.sum(torch.stack(fused_patch_token_list,dim=0), dim=0)
                 
-                fused_learnable_token_list = [feat_list[i] for i in fused_layer_learnable]
+                fused_learnable_token_list = [feat_dict[i] for i in fused_layer_learnable]
                 fused_learnable_token = torch.sum(torch.stack(fused_learnable_token_list,dim=0), dim=0)
                 
-                
-                fused_learnable_token = torch.sum(torch.stack(feat_list,dim=0), dim=0)
-                           
-                
                 # 映射到同一空间
-                # patch_mapping = model.token_mapping(fused_patch_token)+fused_patch_token
-                # learnable_mapping = model.token_mapping(fused_learnable_token)+fused_learnable_token
-                
+                # MLP
                 patch_mapping = model.token_mapping(fused_patch_token)
                 learnable_mapping = model.token_mapping(fused_learnable_token)
+                
+                # attention
+                # input = torch.cat([fused_patch_token, fused_learnable_token], dim=1)
+                # length = fused_learnable_token.shape[1]
+                # output = model.token_mapping(input)
+                # patch_mapping, learnable_mapping = output[:,0:-length,:],output[:,-length:,:]
                 
                 loss = cos_loss(patch_mapping, learnable_mapping)
                 
@@ -845,6 +881,7 @@ if __name__ == '__main__':
                 optimizer.step()
                 loss_list.append(loss.item())
                 lr_scheduler.step()
+            writer.add_scalar(f'train_loss/{args.train_class}', np.mean(loss_list), epoch+1)
             print_fn('epoch [{}/{}], loss:{:.4f}'.format(epoch+1, args.total_epochs, np.mean(loss_list)))
             
             if (epoch + 1) % args.internal == 0 or (epoch + 1) % args.total_epochs == 0:
@@ -872,11 +909,19 @@ if __name__ == '__main__':
                     #         item, auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px))
                     row = "{:^12}".format(item) + "".join(["{:^12.4f}".format(val) for val in [auroc_sp, ap_sp, f1_sp, auroc_px, ap_px, f1_px, aupro_px]])
                     print_fn(row)
-                
+                    # 记录各指标
+                    writer.add_scalar(f'metric/{metric_names[0]}', results[0], epoch+1)
+                    writer.add_scalar(f'metric/{metric_names[1]}', results[1], epoch+1)
+                    writer.add_scalar(f'metric/{metric_names[2]}', results[2], epoch+1)
+                    writer.add_scalar(f'metric/{metric_names[3]}', results[3], epoch+1)
+                    writer.add_scalar(f'metric/{metric_names[4]}', results[4], epoch+1)
+                    writer.add_scalar(f'metric/{metric_names[5]}', results[5], epoch+1)
+                    writer.add_scalar(f'metric/{metric_names[6]}', results[6], epoch+1)
                 # print_fn('Mean: I-Auroc:{:.4f}, I-AP:{:.4f}, I-F1:{:.4f}, P-AUROC:{:.4f}, P-AP:{:.4f}, P-F1:{:.4f}, P-AUPRO:{:.4f}'.format(
                 #         np.mean(auroc_sp_list), np.mean(ap_sp_list), np.mean(f1_sp_list),
                 #         np.mean(auroc_px_list), np.mean(ap_px_list), np.mean(f1_px_list), np.mean(aupro_px_list)))
                 mean_values = [np.mean(auroc_sp_list), np.mean(ap_sp_list), np.mean(f1_sp_list),np.mean(auroc_px_list), np.mean(ap_px_list), np.mean(f1_px_list), np.mean(aupro_px_list)]
                 mean_row = "{:^12}".format("Mean") + "".join(["{:^12.4f}".format(val) for val in mean_values])
                 print_fn(mean_row)
-                torch.save(model.state_dict(), os.path.join(args.save_dir, args.save_name, f'model_{args.internal}.pth'))
+                torch.save({'tokens_insert_layer':model.tokens_insert_layer.state_dict(),'token_mapping':model.token_mapping.state_dict()}, os.path.join(pth_dir, f'{epoch+1}.pth'))
+        writer.close()

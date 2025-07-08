@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 23:26:24
+
+--run id evalute 2 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5901
+epoch [2/70], loss:0.5744
+epoch [3/70], loss:0.5297
+epoch [4/70], loss:0.4611
+epoch [5/70], loss:0.3808
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.6532      0.8142      0.7907      0.9209      0.3326      0.3858      0.5905   
+    Mean       0.6532      0.8142      0.7907      0.9209      0.3326      0.3858      0.5905   
+epoch [6/70], loss:0.3110
+epoch [7/70], loss:0.2554
+epoch [8/70], loss:0.2075
+epoch [9/70], loss:0.1645
+epoch [10/70], loss:0.1274
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.7832      0.8811      0.8075      0.9598      0.5215      0.5580      0.7644   
+    Mean       0.7832      0.8811      0.8075      0.9598      0.5215      0.5580      0.7644   
+epoch [11/70], loss:0.0975
+epoch [12/70], loss:0.0750
+epoch [13/70], loss:0.0591
+epoch [14/70], loss:0.0472
+epoch [15/70], loss:0.0388
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.8836      0.9373      0.8592      0.9813      0.6238      0.6412      0.8938   
+    Mean       0.8836      0.9373      0.8592      0.9813      0.6238      0.6412      0.8938   
+epoch [16/70], loss:0.0324
+epoch [17/70], loss:0.0276
+epoch [18/70], loss:0.0239
+epoch [19/70], loss:0.0210
+epoch [20/70], loss:0.0187
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.8711      0.9252      0.8590      0.9844      0.6589      0.6705      0.8979   
+    Mean       0.8711      0.9252      0.8590      0.9844      0.6589      0.6705      0.8979   
+epoch [21/70], loss:0.0168
+epoch [22/70], loss:0.0153
+epoch [23/70], loss:0.0141
+epoch [24/70], loss:0.0130
+epoch [25/70], loss:0.0121
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9000      0.9416      0.8707      0.9871      0.6851      0.6893      0.9065   
+    Mean       0.9000      0.9416      0.8707      0.9871      0.6851      0.6893      0.9065   
+epoch [26/70], loss:0.0113
+epoch [27/70], loss:0.0106
+epoch [28/70], loss:0.0100
+epoch [29/70], loss:0.0095
+epoch [30/70], loss:0.0091
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9154      0.9517      0.8889      0.9881      0.6899      0.6969      0.9166   
+    Mean       0.9154      0.9517      0.8889      0.9881      0.6899      0.6969      0.9166   
+epoch [31/70], loss:0.0086
+epoch [32/70], loss:0.0083
+epoch [33/70], loss:0.0080
+epoch [34/70], loss:0.0076
+epoch [35/70], loss:0.0074
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9332      0.9603      0.9054      0.9885      0.6954      0.7059      0.9201   
+    Mean       0.9332      0.9603      0.9054      0.9885      0.6954      0.7059      0.9201   
+epoch [36/70], loss:0.0071
+epoch [37/70], loss:0.0069
+epoch [38/70], loss:0.0067
+epoch [39/70], loss:0.0064
+epoch [40/70], loss:0.0063
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9379      0.9627      0.9032      0.9883      0.6936      0.7057      0.9189   
+    Mean       0.9379      0.9627      0.9032      0.9883      0.6936      0.7057      0.9189   
+epoch [41/70], loss:0.0061
+epoch [42/70], loss:0.0059
+epoch [43/70], loss:0.0057
+epoch [44/70], loss:0.0056
+epoch [45/70], loss:0.0054
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9461      0.9676      0.9150      0.9887      0.6971      0.7107      0.9222   
+    Mean       0.9461      0.9676      0.9150      0.9887      0.6971      0.7107      0.9222   
+epoch [46/70], loss:0.0053
+epoch [47/70], loss:0.0052
+epoch [48/70], loss:0.0050
+epoch [49/70], loss:0.0049
+epoch [50/70], loss:0.0048
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9421      0.9653      0.9091      0.9888      0.7005      0.7112      0.9217   
+    Mean       0.9421      0.9653      0.9091      0.9888      0.7005      0.7112      0.9217   
+epoch [51/70], loss:0.0047
+epoch [52/70], loss:0.0045
+epoch [53/70], loss:0.0044
+epoch [54/70], loss:0.0044
+epoch [55/70], loss:0.0043
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9400      0.9638      0.9079      0.9887      0.6990      0.7106      0.9222   
+    Mean       0.9400      0.9638      0.9079      0.9887      0.6990      0.7106      0.9222   
+epoch [56/70], loss:0.0042
+epoch [57/70], loss:0.0041
+epoch [58/70], loss:0.0040
+epoch [59/70], loss:0.0040
+epoch [60/70], loss:0.0039
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9457      0.9676      0.9200      0.9889      0.6991      0.7140      0.9254   
+    Mean       0.9457      0.9676      0.9200      0.9889      0.6991      0.7140      0.9254   
+epoch [61/70], loss:0.0039
+epoch [62/70], loss:0.0038
+epoch [63/70], loss:0.0038
+epoch [64/70], loss:0.0038
+epoch [65/70], loss:0.0038
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9471      0.9683      0.9200      0.9891      0.7028      0.7163      0.9275   
+    Mean       0.9471      0.9683      0.9200      0.9891      0.7028      0.7163      0.9275   
+epoch [66/70], loss:0.0037
+epoch [67/70], loss:0.0037
+epoch [68/70], loss:0.0037
+epoch [69/70], loss:0.0037
+epoch [70/70], loss:0.0037
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+  hazelnut     0.9464      0.9678      0.9200      0.9891      0.7032      0.7164      0.9270   
+    Mean       0.9464      0.9678      0.9200      0.9891      0.7032      0.7164      0.9270   

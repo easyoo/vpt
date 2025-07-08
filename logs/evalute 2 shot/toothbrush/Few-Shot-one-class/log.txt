@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 23:40:07
+
+--run id evalute 2 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5779
+epoch [2/70], loss:0.5614
+epoch [3/70], loss:0.5178
+epoch [4/70], loss:0.4491
+epoch [5/70], loss:0.3703
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.4944      0.7459      0.8451      0.8495      0.0766      0.1462      0.3132   
+    Mean       0.4944      0.7459      0.8451      0.8495      0.0766      0.1462      0.3132   
+epoch [6/70], loss:0.3052
+epoch [7/70], loss:0.2528
+epoch [8/70], loss:0.2105
+epoch [9/70], loss:0.1687
+epoch [10/70], loss:0.1321
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.6694      0.8046      0.8333      0.9171      0.2691      0.3731      0.4323   
+    Mean       0.6694      0.8046      0.8333      0.9171      0.2691      0.3731      0.4323   
+epoch [11/70], loss:0.1024
+epoch [12/70], loss:0.0799
+epoch [13/70], loss:0.0621
+epoch [14/70], loss:0.0494
+epoch [15/70], loss:0.0404
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.8611      0.9388      0.8814      0.9652      0.4402      0.5111      0.7172   
+    Mean       0.8611      0.9388      0.8814      0.9652      0.4402      0.5111      0.7172   
+epoch [16/70], loss:0.0338
+epoch [17/70], loss:0.0288
+epoch [18/70], loss:0.0250
+epoch [19/70], loss:0.0219
+epoch [20/70], loss:0.0195
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9306      0.9718      0.9355      0.9756      0.4985      0.5689      0.7846   
+    Mean       0.9306      0.9718      0.9355      0.9756      0.4985      0.5689      0.7846   
+epoch [21/70], loss:0.0176
+epoch [22/70], loss:0.0160
+epoch [23/70], loss:0.0147
+epoch [24/70], loss:0.0136
+epoch [25/70], loss:0.0127
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9167      0.9665      0.9091      0.9799      0.5264      0.5934      0.8074   
+    Mean       0.9167      0.9665      0.9091      0.9799      0.5264      0.5934      0.8074   
+epoch [26/70], loss:0.0119
+epoch [27/70], loss:0.0111
+epoch [28/70], loss:0.0105
+epoch [29/70], loss:0.0100
+epoch [30/70], loss:0.0095
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9028      0.9627      0.8966      0.9804      0.5194      0.5983      0.8159   
+    Mean       0.9028      0.9627      0.8966      0.9804      0.5194      0.5983      0.8159   
+epoch [31/70], loss:0.0091
+epoch [32/70], loss:0.0087
+epoch [33/70], loss:0.0084
+epoch [34/70], loss:0.0081
+epoch [35/70], loss:0.0078
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9139      0.9674      0.9091      0.9809      0.5190      0.5992      0.8214   
+    Mean       0.9139      0.9674      0.9091      0.9809      0.5190      0.5992      0.8214   
+epoch [36/70], loss:0.0075
+epoch [37/70], loss:0.0072
+epoch [38/70], loss:0.0070
+epoch [39/70], loss:0.0068
+epoch [40/70], loss:0.0066
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9278      0.9734      0.9000      0.9819      0.5266      0.6023      0.8247   
+    Mean       0.9278      0.9734      0.9000      0.9819      0.5266      0.6023      0.8247   
+epoch [41/70], loss:0.0064
+epoch [42/70], loss:0.0062
+epoch [43/70], loss:0.0060
+epoch [44/70], loss:0.0058
+epoch [45/70], loss:0.0057
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9250      0.9722      0.9062      0.9825      0.5335      0.6044      0.8243   
+    Mean       0.9250      0.9722      0.9062      0.9825      0.5335      0.6044      0.8243   
+epoch [46/70], loss:0.0056
+epoch [47/70], loss:0.0054
+epoch [48/70], loss:0.0052
+epoch [49/70], loss:0.0051
+epoch [50/70], loss:0.0050
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9194      0.9705      0.8955      0.9823      0.5310      0.6019      0.8201   
+    Mean       0.9194      0.9705      0.8955      0.9823      0.5310      0.6019      0.8201   
+epoch [51/70], loss:0.0048
+epoch [52/70], loss:0.0047
+epoch [53/70], loss:0.0046
+epoch [54/70], loss:0.0045
+epoch [55/70], loss:0.0044
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9306      0.9751      0.9000      0.9827      0.5311      0.6025      0.8209   
+    Mean       0.9306      0.9751      0.9000      0.9827      0.5311      0.6025      0.8209   
+epoch [56/70], loss:0.0043
+epoch [57/70], loss:0.0042
+epoch [58/70], loss:0.0042
+epoch [59/70], loss:0.0041
+epoch [60/70], loss:0.0041
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9306      0.9751      0.9000      0.9829      0.5347      0.6035      0.8198   
+    Mean       0.9306      0.9751      0.9000      0.9829      0.5347      0.6035      0.8198   
+epoch [61/70], loss:0.0040
+epoch [62/70], loss:0.0040
+epoch [63/70], loss:0.0040
+epoch [64/70], loss:0.0039
+epoch [65/70], loss:0.0039
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9278      0.9740      0.9000      0.9830      0.5352      0.6029      0.8192   
+    Mean       0.9278      0.9740      0.9000      0.9830      0.5352      0.6029      0.8192   
+epoch [66/70], loss:0.0039
+epoch [67/70], loss:0.0039
+epoch [68/70], loss:0.0038
+epoch [69/70], loss:0.0038
+epoch [70/70], loss:0.0038
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ toothbrush    0.9306      0.9748      0.9091      0.9830      0.5355      0.6035      0.8186   
+    Mean       0.9306      0.9748      0.9091      0.9830      0.5355      0.6035      0.8186   

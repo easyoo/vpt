@@ -1,0 +1,196 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-02 17:42:58
+
+--run id test2
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 20
+--internal 1
+--batch_size 16
+--shot 4
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:88
+epoch [1/20], loss:0.9219
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5440      0.7165      0.7635      0.6800      0.1467      0.1854      0.2347   
+    Mean       0.5440      0.7165      0.7635      0.6800      0.1467      0.1854      0.2347   
+epoch [2/20], loss:0.9188
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5399      0.7146      0.7635      0.6795      0.1492      0.1872      0.2304   
+    Mean       0.5399      0.7146      0.7635      0.6795      0.1492      0.1872      0.2304   
+epoch [3/20], loss:0.9113
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5335      0.7122      0.7635      0.6817      0.1509      0.1885      0.2327   
+    Mean       0.5335      0.7122      0.7635      0.6817      0.1509      0.1885      0.2327   
+epoch [4/20], loss:0.8951
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5377      0.7201      0.7635      0.6862      0.1611      0.1956      0.2287   
+    Mean       0.5377      0.7201      0.7635      0.6862      0.1611      0.1956      0.2287   
+epoch [5/20], loss:0.8761
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5395      0.7214      0.7635      0.6924      0.1629      0.1954      0.2221   
+    Mean       0.5395      0.7214      0.7635      0.6924      0.1629      0.1954      0.2221   
+epoch [6/20], loss:0.8460
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5424      0.7138      0.7635      0.7157      0.1460      0.1954      0.2439   
+    Mean       0.5424      0.7138      0.7635      0.7157      0.1460      0.1954      0.2439   
+epoch [7/20], loss:0.7897
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5607      0.7205      0.7635      0.7139      0.1485      0.2067      0.2396   
+    Mean       0.5607      0.7205      0.7635      0.7139      0.1485      0.2067      0.2396   
+epoch [8/20], loss:0.7375
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.5969      0.7290      0.7635      0.7326      0.1316      0.2089      0.2673   
+    Mean       0.5969      0.7290      0.7635      0.7326      0.1316      0.2089      0.2673   
+epoch [9/20], loss:0.6764
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.6169      0.7446      0.7699      0.7084      0.1273      0.2201      0.2372   
+    Mean       0.6169      0.7446      0.7699      0.7084      0.1273      0.2201      0.2372   
+epoch [10/20], loss:0.5666
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.6469      0.7675      0.7647      0.7454      0.1505      0.2327      0.2746   
+    Mean       0.6469      0.7675      0.7647      0.7454      0.1505      0.2327      0.2746   
+epoch [11/20], loss:0.4628
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.7035      0.8181      0.7635      0.7840      0.2444      0.2914      0.3227   
+    Mean       0.7035      0.8181      0.7635      0.7840      0.2444      0.2914      0.3227   
+epoch [12/20], loss:0.3952
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.7000      0.8236      0.7635      0.8375      0.3447      0.3830      0.4567   
+    Mean       0.7000      0.8236      0.7635      0.8375      0.3447      0.3830      0.4567   
+epoch [13/20], loss:0.3427
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.7151      0.8359      0.7635      0.8318      0.3598      0.3892      0.4560   
+    Mean       0.7151      0.8359      0.7635      0.8318      0.3598      0.3892      0.4560   
+epoch [14/20], loss:0.3028
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.6981      0.8266      0.7667      0.8391      0.3666      0.4025      0.4553   
+    Mean       0.6981      0.8266      0.7667      0.8391      0.3666      0.4025      0.4553   
+epoch [15/20], loss:0.2653
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.7148      0.8477      0.7667      0.8562      0.3769      0.4090      0.4930   
+    Mean       0.7148      0.8477      0.7667      0.8562      0.3769      0.4090      0.4930   
+epoch [16/20], loss:0.2238
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.7494      0.8638      0.7635      0.8487      0.3838      0.4368      0.5061   
+    Mean       0.7494      0.8638      0.7635      0.8487      0.3838      0.4368      0.5061   
+epoch [17/20], loss:0.1852
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.7824      0.8796      0.7890      0.8476      0.3604      0.4266      0.5086   
+    Mean       0.7824      0.8796      0.7890      0.8476      0.3604      0.4266      0.5086   
+epoch [18/20], loss:0.1441
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.8036      0.8936      0.7965      0.8642      0.3753      0.4410      0.5351   
+    Mean       0.8036      0.8936      0.7965      0.8642      0.3753      0.4410      0.5351   
+epoch [19/20], loss:0.1045
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.8295      0.9102      0.8039      0.8701      0.3823      0.4468      0.5459   
+    Mean       0.8295      0.9102      0.8039      0.8701      0.3823      0.4468      0.5459   
+epoch [20/20], loss:0.0740
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+   cable       0.8233      0.9041      0.7941      0.8616      0.3520      0.4222      0.5254   
+    Mean       0.8233      0.9041      0.7941      0.8616      0.3520      0.4222      0.5254   
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-02 21:04:34
+
+--run id test2
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 50
+--internal 5
+--batch_size 16
+--shot 4
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:88
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-02 21:05:57
+
+--run id test2
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 50
+--internal 5
+--batch_size 16
+--shot 4
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:88
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-02 21:06:55
+
+--run id test2
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 50
+--internal 5
+--batch_size 16
+--shot 4
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:88
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-02 21:25:40
+
+--run id test2
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 50
+--internal 5
+--batch_size 16
+--shot 4
+--temperature 0.07
+--scaled_factor 4
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:88
+epoch [1/50], loss:0.6132
+epoch [2/50], loss:0.5233
+epoch [3/50], loss:0.3768
+epoch [4/50], loss:0.2423
+epoch [5/50], loss:0.1253
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   

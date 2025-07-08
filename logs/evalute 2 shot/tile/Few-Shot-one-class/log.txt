@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 23:10:36
+
+--run id evalute 2 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 2
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:44
+epoch [1/70], loss:0.5750
+epoch [2/70], loss:0.5568
+epoch [3/70], loss:0.5085
+epoch [4/70], loss:0.4328
+epoch [5/70], loss:0.3476
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9960      0.9985      0.9820      0.8432      0.2834      0.3612      0.5391   
+    Mean       0.9960      0.9985      0.9820      0.8432      0.2834      0.3612      0.5391   
+epoch [6/70], loss:0.2764
+epoch [7/70], loss:0.2247
+epoch [8/70], loss:0.1810
+epoch [9/70], loss:0.1426
+epoch [10/70], loss:0.1131
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9910      0.9965      0.9765      0.8599      0.3167      0.3992      0.5795   
+    Mean       0.9910      0.9965      0.9765      0.8599      0.3167      0.3992      0.5795   
+epoch [11/70], loss:0.0877
+epoch [12/70], loss:0.0685
+epoch [13/70], loss:0.0547
+epoch [14/70], loss:0.0447
+epoch [15/70], loss:0.0373
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9964      0.9986      0.9881      0.8992      0.3851      0.4583      0.6626   
+    Mean       0.9964      0.9986      0.9881      0.8992      0.3851      0.4583      0.6626   
+epoch [16/70], loss:0.0318
+epoch [17/70], loss:0.0274
+epoch [18/70], loss:0.0241
+epoch [19/70], loss:0.0215
+epoch [20/70], loss:0.0194
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9988      0.9882      0.9090      0.4153      0.4838      0.6842   
+    Mean       0.9971      0.9988      0.9882      0.9090      0.4153      0.4838      0.6842   
+epoch [21/70], loss:0.0176
+epoch [22/70], loss:0.0161
+epoch [23/70], loss:0.0149
+epoch [24/70], loss:0.0138
+epoch [25/70], loss:0.0129
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9968      0.9987      0.9881      0.9088      0.4173      0.4850      0.6790   
+    Mean       0.9968      0.9987      0.9881      0.9088      0.4173      0.4850      0.6790   
+epoch [26/70], loss:0.0121
+epoch [27/70], loss:0.0114
+epoch [28/70], loss:0.0108
+epoch [29/70], loss:0.0102
+epoch [30/70], loss:0.0097
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9968      0.9987      0.9881      0.9103      0.4244      0.4907      0.6798   
+    Mean       0.9968      0.9987      0.9881      0.9103      0.4244      0.4907      0.6798   
+epoch [31/70], loss:0.0093
+epoch [32/70], loss:0.0089
+epoch [33/70], loss:0.0086
+epoch [34/70], loss:0.0083
+epoch [35/70], loss:0.0080
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9968      0.9987      0.9881      0.9112      0.4293      0.4941      0.6813   
+    Mean       0.9968      0.9987      0.9881      0.9112      0.4293      0.4941      0.6813   
+epoch [36/70], loss:0.0077
+epoch [37/70], loss:0.0075
+epoch [38/70], loss:0.0072
+epoch [39/70], loss:0.0070
+epoch [40/70], loss:0.0068
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9989      0.9881      0.9128      0.4372      0.4965      0.6853   
+    Mean       0.9971      0.9989      0.9881      0.9128      0.4372      0.4965      0.6853   
+epoch [41/70], loss:0.0066
+epoch [42/70], loss:0.0064
+epoch [43/70], loss:0.0062
+epoch [44/70], loss:0.0060
+epoch [45/70], loss:0.0059
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9989      0.9881      0.9147      0.4490      0.5036      0.6885   
+    Mean       0.9971      0.9989      0.9881      0.9147      0.4490      0.5036      0.6885   
+epoch [46/70], loss:0.0057
+epoch [47/70], loss:0.0056
+epoch [48/70], loss:0.0054
+epoch [49/70], loss:0.0053
+epoch [50/70], loss:0.0052
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9989      0.9881      0.9169      0.4605      0.5090      0.6934   
+    Mean       0.9971      0.9989      0.9881      0.9169      0.4605      0.5090      0.6934   
+epoch [51/70], loss:0.0050
+epoch [52/70], loss:0.0049
+epoch [53/70], loss:0.0048
+epoch [54/70], loss:0.0047
+epoch [55/70], loss:0.0046
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9989      0.9881      0.9177      0.4657      0.5110      0.6940   
+    Mean       0.9971      0.9989      0.9881      0.9177      0.4657      0.5110      0.6940   
+epoch [56/70], loss:0.0045
+epoch [57/70], loss:0.0044
+epoch [58/70], loss:0.0044
+epoch [59/70], loss:0.0043
+epoch [60/70], loss:0.0042
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9989      0.9881      0.9174      0.4674      0.5099      0.6917   
+    Mean       0.9971      0.9989      0.9881      0.9174      0.4674      0.5099      0.6917   
+epoch [61/70], loss:0.0042
+epoch [62/70], loss:0.0041
+epoch [63/70], loss:0.0041
+epoch [64/70], loss:0.0041
+epoch [65/70], loss:0.0041
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9971      0.9989      0.9882      0.9179      0.4727      0.5125      0.6936   
+    Mean       0.9971      0.9989      0.9882      0.9179      0.4727      0.5125      0.6936   
+epoch [66/70], loss:0.0040
+epoch [67/70], loss:0.0040
+epoch [68/70], loss:0.0040
+epoch [69/70], loss:0.0040
+epoch [70/70], loss:0.0040
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    tile       0.9975      0.9990      0.9882      0.9177      0.4724      0.5123      0.6926   
+    Mean       0.9975      0.9990      0.9882      0.9177      0.4724      0.5123      0.6926   

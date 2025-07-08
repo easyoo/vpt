@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 22:56:09
+
+--run id evalute 1 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 1
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:22
+epoch [1/70], loss:0.5524
+epoch [2/70], loss:0.5524
+epoch [3/70], loss:0.5448
+epoch [4/70], loss:0.5307
+epoch [5/70], loss:0.5077
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.7675      0.7112      0.7160      0.6473      0.1089      0.1701      0.2178   
+    Mean       0.7675      0.7112      0.7160      0.6473      0.1089      0.1701      0.2178   
+epoch [6/70], loss:0.4772
+epoch [7/70], loss:0.4440
+epoch [8/70], loss:0.4082
+epoch [9/70], loss:0.3688
+epoch [10/70], loss:0.3315
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8146      0.7403      0.7333      0.7920      0.2577      0.2964      0.3891   
+    Mean       0.8146      0.7403      0.7333      0.7920      0.2577      0.2964      0.3891   
+epoch [11/70], loss:0.2998
+epoch [12/70], loss:0.2702
+epoch [13/70], loss:0.2442
+epoch [14/70], loss:0.2213
+epoch [15/70], loss:0.1993
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8092      0.7322      0.7091      0.8196      0.3355      0.3605      0.5015   
+    Mean       0.8092      0.7322      0.7091      0.8196      0.3355      0.3605      0.5015   
+epoch [16/70], loss:0.1795
+epoch [17/70], loss:0.1611
+epoch [18/70], loss:0.1416
+epoch [19/70], loss:0.1257
+epoch [20/70], loss:0.1119
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8829      0.8120      0.7952      0.8389      0.3567      0.3576      0.5195   
+    Mean       0.8829      0.8120      0.7952      0.8389      0.3567      0.3576      0.5195   
+epoch [21/70], loss:0.0987
+epoch [22/70], loss:0.0863
+epoch [23/70], loss:0.0768
+epoch [24/70], loss:0.0682
+epoch [25/70], loss:0.0603
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8883      0.8324      0.8158      0.8411      0.3600      0.3546      0.5175   
+    Mean       0.8883      0.8324      0.8158      0.8411      0.3600      0.3546      0.5175   
+epoch [26/70], loss:0.0539
+epoch [27/70], loss:0.0487
+epoch [28/70], loss:0.0440
+epoch [29/70], loss:0.0401
+epoch [30/70], loss:0.0365
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8646      0.8127      0.7887      0.8426      0.3614      0.3632      0.5139   
+    Mean       0.8646      0.8127      0.7887      0.8426      0.3614      0.3632      0.5139   
+epoch [31/70], loss:0.0336
+epoch [32/70], loss:0.0308
+epoch [33/70], loss:0.0284
+epoch [34/70], loss:0.0265
+epoch [35/70], loss:0.0247
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8583      0.8016      0.7714      0.8474      0.3678      0.3746      0.5283   
+    Mean       0.8583      0.8016      0.7714      0.8474      0.3678      0.3746      0.5283   
+epoch [36/70], loss:0.0230
+epoch [37/70], loss:0.0217
+epoch [38/70], loss:0.0204
+epoch [39/70], loss:0.0192
+epoch [40/70], loss:0.0182
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8562      0.7931      0.7532      0.8529      0.3789      0.3923      0.5567   
+    Mean       0.8562      0.7931      0.7532      0.8529      0.3789      0.3923      0.5567   
+epoch [41/70], loss:0.0173
+epoch [42/70], loss:0.0165
+epoch [43/70], loss:0.0157
+epoch [44/70], loss:0.0150
+epoch [45/70], loss:0.0143
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8596      0.7933      0.7692      0.8588      0.3924      0.4091      0.5871   
+    Mean       0.8596      0.7933      0.7692      0.8588      0.3924      0.4091      0.5871   
+epoch [46/70], loss:0.0137
+epoch [47/70], loss:0.0132
+epoch [48/70], loss:0.0127
+epoch [49/70], loss:0.0122
+epoch [50/70], loss:0.0118
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8646      0.7910      0.7711      0.8668      0.4057      0.4199      0.6025   
+    Mean       0.8646      0.7910      0.7711      0.8668      0.4057      0.4199      0.6025   
+epoch [51/70], loss:0.0114
+epoch [52/70], loss:0.0110
+epoch [53/70], loss:0.0107
+epoch [54/70], loss:0.0103
+epoch [55/70], loss:0.0101
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8650      0.7933      0.7692      0.8740      0.4179      0.4304      0.6017   
+    Mean       0.8650      0.7933      0.7692      0.8740      0.4179      0.4304      0.6017   
+epoch [56/70], loss:0.0098
+epoch [57/70], loss:0.0095
+epoch [58/70], loss:0.0093
+epoch [59/70], loss:0.0090
+epoch [60/70], loss:0.0088
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8629      0.7911      0.7733      0.8819      0.4312      0.4429      0.5957   
+    Mean       0.8629      0.7911      0.7733      0.8819      0.4312      0.4429      0.5957   
+epoch [61/70], loss:0.0086
+epoch [62/70], loss:0.0084
+epoch [63/70], loss:0.0082
+epoch [64/70], loss:0.0080
+epoch [65/70], loss:0.0079
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8642      0.7990      0.7733      0.8886      0.4435      0.4542      0.5914   
+    Mean       0.8642      0.7990      0.7733      0.8886      0.4435      0.4542      0.5914   
+epoch [66/70], loss:0.0077
+epoch [67/70], loss:0.0076
+epoch [68/70], loss:0.0074
+epoch [69/70], loss:0.0073
+epoch [70/70], loss:0.0072
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+ transistor    0.8629      0.8016      0.7733      0.8921      0.4498      0.4603      0.5895   
+    Mean       0.8629      0.8016      0.7733      0.8921      0.4498      0.4603      0.5895   

@@ -1,0 +1,134 @@
+
+
+
+
+
+=======================================☆☆☆ Configuration Information ☆☆☆========================================
+--Running Time:2025-07-03 22:33:16
+
+--run id evalute 1 shot
+--learnable_layers 1
+--learnable_num_per_layer 32
+--fused_layer [1, 2, 3, 4, 6, 8, 11]
+--fused_layer_learnable [0]
+--total_epochs 70
+--internal 5
+--batch_size 16
+--shot 1
+--temperature 0.07
+--scaled_factor 3
+========================================☆☆☆☆☆ End ☆☆☆☆☆=======================================================
+
+train image number:22
+epoch [1/70], loss:0.5567
+epoch [2/70], loss:0.5594
+epoch [3/70], loss:0.5479
+epoch [4/70], loss:0.5329
+epoch [5/70], loss:0.5083
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.6070      0.8554      0.8633      0.7739      0.1550      0.2358      0.5435   
+    Mean       0.6070      0.8554      0.8633      0.7739      0.1550      0.2358      0.5435   
+epoch [6/70], loss:0.4770
+epoch [7/70], loss:0.4413
+epoch [8/70], loss:0.4041
+epoch [9/70], loss:0.3643
+epoch [10/70], loss:0.3218
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9053      0.9724      0.9000      0.8996      0.4375      0.4657      0.8459   
+    Mean       0.9053      0.9724      0.9000      0.8996      0.4375      0.4657      0.8459   
+epoch [11/70], loss:0.2895
+epoch [12/70], loss:0.2604
+epoch [13/70], loss:0.2345
+epoch [14/70], loss:0.2144
+epoch [15/70], loss:0.1903
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9474      0.9849      0.9298      0.8947      0.4661      0.5040      0.8427   
+    Mean       0.9474      0.9849      0.9298      0.8947      0.4661      0.5040      0.8427   
+epoch [16/70], loss:0.1745
+epoch [17/70], loss:0.1516
+epoch [18/70], loss:0.1352
+epoch [19/70], loss:0.1174
+epoch [20/70], loss:0.1041
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9518      0.9863      0.9391      0.8879      0.5075      0.5317      0.8513   
+    Mean       0.9518      0.9863      0.9391      0.8879      0.5075      0.5317      0.8513   
+epoch [21/70], loss:0.0924
+epoch [22/70], loss:0.0814
+epoch [23/70], loss:0.0720
+epoch [24/70], loss:0.0645
+epoch [25/70], loss:0.0578
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9649      0.9899      0.9483      0.8780      0.5193      0.5463      0.8629   
+    Mean       0.9649      0.9899      0.9483      0.8780      0.5193      0.5463      0.8629   
+epoch [26/70], loss:0.0510
+epoch [27/70], loss:0.0461
+epoch [28/70], loss:0.0419
+epoch [29/70], loss:0.0382
+epoch [30/70], loss:0.0350
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9816      0.9945      0.9661      0.8856      0.5421      0.5714      0.8724   
+    Mean       0.9816      0.9945      0.9661      0.8856      0.5421      0.5714      0.8724   
+epoch [31/70], loss:0.0324
+epoch [32/70], loss:0.0300
+epoch [33/70], loss:0.0277
+epoch [34/70], loss:0.0259
+epoch [35/70], loss:0.0242
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9886      0.9968      0.9831      0.8887      0.5469      0.5734      0.8701   
+    Mean       0.9886      0.9968      0.9831      0.8887      0.5469      0.5734      0.8701   
+epoch [36/70], loss:0.0228
+epoch [37/70], loss:0.0214
+epoch [38/70], loss:0.0202
+epoch [39/70], loss:0.0192
+epoch [40/70], loss:0.0183
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9939      0.9982      0.9831      0.8868      0.5509      0.5748      0.8736   
+    Mean       0.9939      0.9982      0.9831      0.8868      0.5509      0.5748      0.8736   
+epoch [41/70], loss:0.0173
+epoch [42/70], loss:0.0165
+epoch [43/70], loss:0.0159
+epoch [44/70], loss:0.0152
+epoch [45/70], loss:0.0146
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9956      0.9987      0.9831      0.8867      0.5455      0.5733      0.8735   
+    Mean       0.9956      0.9987      0.9831      0.8867      0.5455      0.5733      0.8735   
+epoch [46/70], loss:0.0140
+epoch [47/70], loss:0.0135
+epoch [48/70], loss:0.0130
+epoch [49/70], loss:0.0126
+epoch [50/70], loss:0.0122
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9939      0.9982      0.9831      0.8879      0.5494      0.5769      0.8739   
+    Mean       0.9939      0.9982      0.9831      0.8879      0.5494      0.5769      0.8739   
+epoch [51/70], loss:0.0118
+epoch [52/70], loss:0.0115
+epoch [53/70], loss:0.0112
+epoch [54/70], loss:0.0108
+epoch [55/70], loss:0.0105
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9939      0.9982      0.9831      0.8893      0.5466      0.5764      0.8735   
+    Mean       0.9939      0.9982      0.9831      0.8893      0.5466      0.5764      0.8735   
+epoch [56/70], loss:0.0103
+epoch [57/70], loss:0.0100
+epoch [58/70], loss:0.0098
+epoch [59/70], loss:0.0095
+epoch [60/70], loss:0.0094
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9930      0.9979      0.9831      0.8906      0.5501      0.5776      0.8725   
+    Mean       0.9930      0.9979      0.9831      0.8906      0.5501      0.5776      0.8725   
+epoch [61/70], loss:0.0091
+epoch [62/70], loss:0.0089
+epoch [63/70], loss:0.0087
+epoch [64/70], loss:0.0086
+epoch [65/70], loss:0.0084
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9912      0.9974      0.9748      0.8913      0.5505      0.5771      0.8721   
+    Mean       0.9912      0.9974      0.9748      0.8913      0.5505      0.5771      0.8721   
+epoch [66/70], loss:0.0082
+epoch [67/70], loss:0.0081
+epoch [68/70], loss:0.0079
+epoch [69/70], loss:0.0078
+epoch [70/70], loss:0.0077
+   Class      I-Auroc       I-AP        I-F1      P-AUROC       P-AP        P-F1      P-AUPRO   
+    wood       0.9921      0.9976      0.9748      0.8916      0.5483      0.5756      0.8727   
+    Mean       0.9921      0.9976      0.9748      0.8916      0.5483      0.5756      0.8727   
